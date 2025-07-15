@@ -22,11 +22,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+      {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif|webp)$/i,
         type: "asset/resource",
       },
       {
@@ -37,15 +41,15 @@ module.exports = {
         test: /\.(?:js|mjs|cjs)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             exclude: [
               /node_modules[/]core-js/,
               /node_modules[/]webpack[/]buildin/,
             ],
-            targets: 'defaults',
-            presets: [['@babel/preset-env']],
-            plugins: ['@babel/plugin-transform-runtime'],
+            targets: "defaults",
+            presets: [["@babel/preset-env"]],
+            plugins: ["@babel/plugin-transform-runtime"],
           },
         },
       },
